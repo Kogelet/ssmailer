@@ -65,10 +65,11 @@ public class ScheduledParser {
                     // Get headtitle to check if it includes Pardod
                     String headTitle = doc.getElementsByClass("headtitle").get(0).html();
                     boolean isForSale = headTitle.contains("Pārdod");
+                    boolean isRiga = headTitle.contains("Rīga");
 
                     log.debug("Parsing the link: {}",url);
 
-                    if (isForSale) {
+                    if (isForSale && isRiga) {
 
                         String region = doc.selectFirst("#tdo_20").child(0).html();
                         String city = doc.selectFirst("#tdo_856").child(0).html();
@@ -127,7 +128,7 @@ public class ScheduledParser {
                             //send mail
                             emailService.sendSimpleMessage(emailTo, "SS alert", appartment.toString());
                         };
-                        log.debug("Sc completed");
+                        log.debug("Apartment validation completed");
                     }
 
                 }
