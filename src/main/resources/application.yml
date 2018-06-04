@@ -1,0 +1,57 @@
+---
+spring:
+  profiles:
+    active: dev
+  h2:
+    console:
+      enabled: true
+      path: /console
+  datasource:
+    url: jdbc:h2:file:~/h2/testdb
+  mail:
+    from: Forex Patrol
+    to: sayadov@gmail.com
+    host: smtp.gmail.com
+    port: 587
+    username: kogelet@gmail.com
+    password: Kogelet1983
+    protocol: smtp
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
+      ssl.trust: smtp.gmail.com
+ssmailer:
+  floorsException: 1
+  riga:
+    maxNumberRooms: 2
+    pricePerMeter: 1000
+    buildingTypes: 103.,104.,119.,467.,602.,Jaun.
+  balozi:
+    maxNumberRooms: 3
+    pricePerMeter: 1200
+    price:
+    buildingTypes: Jaun.
+
+---
+spring:
+  profiles: dev
+logging:
+ level:
+  root: ERROR
+  org.springframework.web: DEBUG
+  com.ssparser: DEBUG
+ssparser:
+  cronTime: "*/10 * * * * *"
+
+---
+spring:
+ profiles: prod
+logging:
+ level:
+  root: ERROR
+  org.springframework.web: INFO
+ssparser:
+  cronTime: "0 * * * * *"
+
+
+
