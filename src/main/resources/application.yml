@@ -9,8 +9,7 @@ spring:
   datasource:
     url: jdbc:h2:file:~/h2/testdb
   mail:
-    from: Forex Patrol
-    to: sayadov@gmail.com
+    to: "Vagram Sayadov <sayadov@gmail.com>"
     host: smtp.gmail.com
     port: 587
     username: kogelet@gmail.com
@@ -19,13 +18,17 @@ spring:
     properties.mail.smtp:
       auth: true
       starttls.enable: true
+      starttls.required: true
       ssl.trust: smtp.gmail.com
+      connectiontimeout: 5000
+      timeout: 5000
+      writetimeout: 5000
 ssmailer:
   floorsException: 1
   riga:
     maxNumberRooms: 2
-    pricePerMeter: 1000
-    buildingTypes: 103.,104.,119.,467.,602.,Jaun.
+    pricePerMeter: 1200
+    buildingTypes: 119.,467.,Jaun.
   balozi:
     maxNumberRooms: 3
     pricePerMeter: 1200
@@ -38,10 +41,11 @@ spring:
 logging:
  level:
   root: ERROR
-  org.springframework.web: DEBUG
-  com.ssparser: DEBUG
+  org.springframework.web: ERROR
+  com.sun.mail.smtp: DEBUG
+  com.ssparser: ERROR
 ssparser:
-  cronTime: "*/10 * * * * *"
+  cronTime: "0 * * * * *"
 
 ---
 spring:
@@ -50,6 +54,8 @@ logging:
  level:
   root: ERROR
   org.springframework.web: INFO
+  com.sun.mail.smtp: INFO
+  com.ssparser: INFO
 ssparser:
   cronTime: "0 * * * * *"
 

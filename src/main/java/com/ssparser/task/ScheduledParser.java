@@ -126,6 +126,7 @@ public class ScheduledParser {
                         // ApartmentValidator checks
                         if (apartmentValidatorService.isApproved(appartment)) {
                             //send mail
+                            log.debug("Apartment is approved. Sending email...");
                             emailService.sendSimpleMessage(emailTo, "SS alert", appartment.toString());
                         };
                         log.debug("Apartment validation completed");

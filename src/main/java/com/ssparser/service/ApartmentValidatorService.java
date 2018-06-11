@@ -68,7 +68,7 @@ public class ApartmentValidatorService {
 
             return (isGoodType && isGoodRoomNumber && isGoodPrice);
         }
-        else if (a.getCity().equals("Baloži")) {
+        else if (a.getCity().equals("Baloži") || a.getCity().equals("Mārupes pag.")) {
 
             boolean isGoodType = baloziBuildinTypes.equals(a.getBuildingType());
 
